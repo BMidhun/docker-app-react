@@ -1,0 +1,26 @@
+version: "3"
+services: 
+
+    react-app:
+        stdin_open: true
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        volumes:
+            - /usr/src/app/frontend/node_modules
+            - .:/usr/src/app/frontend                 
+        ports: 
+            - "3000:3000"
+    
+    react-app-test:
+        # stdin_open: true
+        build:
+            context: .
+            dockerfile: Dockerfile.dev
+        volumes:
+            - /usr/src/app/frontend/node_modules
+            - .:/usr/src/app/frontend
+
+        command: ["npm","run","test"]
+
+        

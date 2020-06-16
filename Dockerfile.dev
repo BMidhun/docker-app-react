@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:alpine
 
 WORKDIR /usr/src/app/frontend
 
@@ -10,4 +10,4 @@ RUN npm install react-scripts -g
 
 COPY . .
 
-RUN npm start
+CMD [ "npm","start" ]

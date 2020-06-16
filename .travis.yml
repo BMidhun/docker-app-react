@@ -1,0 +1,19 @@
+sudo: required
+# Tells travis to use the administrator privileges to install or execute commands
+
+services:
+    - docker
+# Tells travis to have a copy of docker 
+
+before_install:
+    - docker build -t prod-app -f Dockerfile.dev .
+
+#So before engaging the testing or the deployment process, build the docker container.
+
+script:
+    - docker run prod-app npm run test -- --coverage
+
+# An additional command apart from npm run test is been added -- --coverage which indicates to complete the test.
+# If the -- --coverage is not provided, the test process will be stuck and requires user input to continue.
+
+

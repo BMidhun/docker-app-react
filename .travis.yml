@@ -11,7 +11,7 @@ before_install:
 #So before engaging the testing or the deployment process, build the docker container.
 
 script:
-    - docker run prod-app npm run test -- --coverage
+    - docker run -e CI=true prod-app npm run test
 
 # An additional command apart from npm run test is been added -- --coverage which indicates to complete the test.
 # If the -- --coverage is not provided, the test process will be stuck and requires user input to continue.
